@@ -3,55 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnController : MonoBehaviour
-{
-    //Definition of the attributes
-    public float HorizontalSpeed;
-    
-    //Range where the spawner can moves
-    private float xRange =12f;
-    private float direction = 1;
+{    
+    //Range where the animals wil spawn
+    private float xRange =24f;
 
     //Attributes for spawn animals
     public GameObject[] animalCatalog;
-
-    public float spawnSpeed;
+    private float initDelay = 2f;
+    private float  spawnIntervale = 1.5f;
 
     void Start()
     {
-
-
-    }
-
-    IEnumerator Example()
-    {
-        
-        
-        
-        yield return new WaitForSeconds(5);
-        Debug.Log( 2 );
-
+        InvokeRepeating("SpawnAnimals", initDelay, spawnIntervale);
     }
 
     // Update is called once per frame
     void Update(){
         
-        if(transform.position.x > xRange || transform.position.x < -xRange ){
-            direction = direction * -1;
-        }
+    }
 
-        
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            
-            Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 0, transform.position.z);
-            
-            int indexAnimal = Random.Range(0, animalCatalog.Length);
+    void SpawnAnimals(){
+        Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 0, transform.position.z);    
+        int indexAnimal = Random.Range(0, animalCatalog.Length);
 
-            Instantiate(animalCatalog[indexAnimal], spawnPos, animalCatalog[indexAnimal].transform.rotation);
-        }
-        
-        
-
-        transform.Translate(Vector3.right * Time.deltaTime * HorizontalSpeed * direction);
+        Instantiate(animalCatalog[indexAnimal], spawnPos, animalCatalog[indexAnimal].transform.rotation);
     }
 }

@@ -7,25 +7,28 @@ public class PlayerControler : MonoBehaviour
     //Definition of the attributes
     private float horizontalInput;
     public GameObject proyectilePrefab;
-    private float HorizontalSpeed= 10f ;
+    private float HorizontalSpeed= 18f ;
 
     //Range where the player can moves
-    private float xRange =12f;
+    private float xRange =24f;
 
     // Update is called once per frame
     private void Update(){
         
         //keep the payer is in the gaem area
-        if(transform.position.x < -xRange ){
+        if(transform.position.x < -xRange )
+        {
             transform.position = new Vector3(-10, transform.position.y, transform.position.z);
         } 
 
-        if(transform.position.x > xRange ){
+        if(transform.position.x > xRange )
+        {
             transform.position = new Vector3(10, transform.position.y, transform.position.z);
         }  
 
         //Launch an proyectile
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
             Instantiate(proyectilePrefab, transform.position + new Vector3(0, 1.5f, 1f), proyectilePrefab.transform.rotation);
         }
     
