@@ -7,10 +7,10 @@ public class PlayerControler : MonoBehaviour
     //Definition of the attributes
     private float horizontalInput;
     public GameObject proyectilePrefab;
-    private float HorizontalSpeed= 18f ;
+    private float HorizontalSpeed = 18f;
 
     //Range where the player can moves
-    private float xRange =24f;
+    private float xRange = 18f;
 
     // Update is called once per frame
     private void Update(){

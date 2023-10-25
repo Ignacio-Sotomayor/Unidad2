@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {    
     //Range where the animals wil spawn
-    private float xRange =24f;
+    private float xRange = 16f;
 
     //Attributes for spawn animals
     public GameObject[] animalCatalog;
